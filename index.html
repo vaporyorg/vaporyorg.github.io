@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+
+    <title>Vapory - Design, Create, and Produce Distributed Applications</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css" />
+
+    <!-- Custom CSS -->
+    <style>
+        body {
+            padding-top: 50px;
+        }
+
+        .starter-template {
+            padding: 40px 15px;
+            text-align: center;
+        }
+    </style>
+    <link rel="stylesheet" type="text/css" href="css/base.css" />
+    <link rel="stylesheet" type="text/css" href="css/demo2.css" />
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+    <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+    <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/ico" href="./img/favicon.ico" />
+
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-LQ3XHR5FTT"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+        gtag('js', new Date());
+
+        gtag('config', 'G-LQ3XHR5FTT');
+    </script>
+
+</head>
+
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#">Vapory</a>
+            </div>
+            <div class="collapse navbar-collapse">
+                <ul class="nav navbar-nav">
+                    <li class="active"><a href="https://vaporscan.com">VaporScan</a></li>
+                    <li><a href="https://vistadao.com">VistaDAO</a></li>
+                    <li><a href="https://edge.vapory.org">Edge</a></li>
+                    <li><a href="https://metroswap.org">Metroswap</a></li>
+                    <li><a href="https://mask.vapory.org">Vapormask</a></li>
+                    <li><a href="https://moxie.vapory.org">Moxie Suite</a></li>
+                    <li><a href="https://xynthe.com">Xynthe</a></li>
+                    <li><a href="https://quad.vapory.org">Quad</a></li>
+                    <li><a href="https://tx.vapory.org">Tx</a></li>
+                    <li><a href="https://graph.vapory.org">VaporGraph</a></li>
+                    <li><a href="https://vega.bond">Vega</a></li>
+                    <li><a href="https://woa.vapory.org">WOA</a></li>
+                </ul>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+    <!-- Page Content -->
+    <div class="container" id="home-content" style="min-width:100%;background-color: #202428;">
+        <div class="container" style="min-height: 600px; ">
+            <div class="starter-template" style="min-width: 768px;margin:0px auto;padding:0px;">
+                <div class="content">
+                    <canvas class="scene scene--full" id="scene"></canvas>
+                    <script type="x-shader/x-vertex" id="wrapVertexShader">
+                        #define PI 3.1415926535897932384626433832795
+                        attribute float size;
+                        void main() {
+                            vec4 mvPosition = modelViewMatrix * vec4( position, 1.0 );
+                            gl_PointSize = 3.0;
+                            gl_Position = projectionMatrix * mvPosition;
+                        }
+                    </script>
+                    <script type="x-shader/x-fragment" id="wrapFragmentShader">
+                        uniform sampler2D texture;
+                        void main(){
+                            vec4 textureColor = texture2D( texture, gl_PointCoord );
+                            if ( textureColor.a < 0.3 ) discard;
+                            vec4 dotColor = vec4(0.391, 0.730, 0.0730, 0.4);
+                            vec4 color = dotColor * textureColor;
+                            gl_FragColor = color;
+                        }
+                    </script>
+                    <div class="content__inner">
+                        <img src="img/VAP.png">
+                        <h2 class="content__title">Vapory</h2>
+                        <h3 class="content__subtitle">Design, Create, and Produce Open Distributed Applications</h2>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- /.container -->
+    <div class="container">
+        <div class="row">
+            <div class="starter-template">
+                <p>&copy; Vapory Developers</p>
+            </div>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.1/js/bootstrap.min.js"></script>
+
+    <script src="js/demo.js"></script>
+    <script src="js/three.min.js"></script>
+    <script src="js/TweenMax.min.js"></script>
+    <script src="js/demo2.js"></script>
+</body>
+
+</html>
